@@ -44,3 +44,5 @@
       ((and (< y 0.0) (= x 0.0)) (- HALF-PI))
       (else ; really undefined
         0.0))))
+
+(define clock 0.0) ; used for animations

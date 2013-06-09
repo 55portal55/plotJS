@@ -48,10 +48,20 @@
      (z (/ (+ -1.0 (* X X) (* Y Y)) (+ 1.0 (* X X) (* Y Y)))))
     (list x y z)))
 
+(define spot-threshold 0.5) ; settable in the animation version of plotJS
+
 (define (procedural-map x y stereo-type)
   (cond
     ((eq? stereo-type 'smooth-spots)
       (+ (/ (+ (sin (* 2.0 PI x)) (sin (* 2.0 PI y))) 4.0) 0.5))
+    ((eq? stereo-type 'hard-spots)
+      (let
+        ((offset (* 4.0 2.0 PI clock)))
+        (if (< (+ (/ (* (sin (+ offset (* 20.0 2.0 PI x)))
+                        (sin (+ offset (* 20.0 2.0 PI y)))) 0.5) 0.5)
+          spot-threshold)
+          1.0
+          0.0)))
     ((eq? stereo-type 'vertical-stripes)
       (if (= (remainder (inexact->exact (truncate (* x 6.0))) 2) 0)
         0.0

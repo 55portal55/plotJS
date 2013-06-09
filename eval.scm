@@ -137,6 +137,10 @@
           (if (eq? mode 'complex)
             (make-complex PI 0.0)
             PI))
+        ((eq? lst 'clock) ; used for animations
+          (if (eq? mode 'complex)
+            (make-complex clock 0.0)
+            clock))
         (else
           (if (eq? mode 'complex)
             (make-complex 0.0 0.0)

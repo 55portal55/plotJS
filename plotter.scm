@@ -6,8 +6,8 @@
 
 (define (complex-function f iterations r i step x y)
   (let
-    ((cr (+ r (* (exact->inexact x) step)))
-     (ci (+ i (* (exact->inexact y) step))))
+    ((cr (+ r (* (exact->inexact x) step) (jitter step)))
+     (ci (+ i (* (exact->inexact y) step) (jitter step))))
     (evaluate-iterations f iterations cr ci cr ci)))
 
 (define (complex-plotter f iterations color-type r i step width height)
