@@ -1,4 +1,8 @@
 
+;;; plotJS
+
+;;; Author: Rick Miskowski - www.richardmiskowski.com
+
 ;;; function plotter
 
 (define WIDTH 320) ; display resolution
